@@ -18,4 +18,3 @@ public class HelloApplication extends Application {
     }
 }
 
-//Neuer Test
