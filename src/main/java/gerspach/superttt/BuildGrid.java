@@ -12,14 +12,25 @@ public class BuildGrid extends Pane {
         this.getChildren().add(createTTTGrid(coordGrid));
     }
 
-    private static Node createTTTGrid(GridPane coordGrid){
-        for(int i = 1; i <= 9; i++){
-            coordGrid.add(new Button(""+i), ((i-1)%3), (((i-1)/3)%3));
+    int[] gridArray = new int[9];
 
+    private Node createTTTGrid(GridPane gridTTT){
+        for (int i = 0; i < gridArray.length; i++) {
+            gridTTT.add(new Button(""+(i + 1)), i % 3, i / 3);
+            gridArray[i] = i;
         }
-        coordGrid.setPadding(new Insets(10,10,10,10));
-        coordGrid.setGridLinesVisible(true);
-        return coordGrid;
+
+        gridTTT.setPadding(new Insets(10,10,10,10));
+        gridTTT.setGridLinesVisible(true);
+        return gridTTT;
+    }
+
+    public String getArrayData() {
+        String output = "";
+        for (int i = 0; i < gridArray.length; i++){
+            output = output + "" + (gridArray[i]);
+        }
+        return output;
     }
 
 
