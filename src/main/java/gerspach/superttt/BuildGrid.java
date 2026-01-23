@@ -12,7 +12,7 @@ public class BuildGrid extends Pane {
         this.getChildren().add(createTTTGrid(coordGrid));
     }
 
-    int[] gridArray = new int[9];
+    private int[] gridArray = new int[9];
 
     private Node createTTTGrid(GridPane gridTTT){
         for (int i = 0; i < gridArray.length; i++) {
