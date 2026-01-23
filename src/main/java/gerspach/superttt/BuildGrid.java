@@ -15,6 +15,7 @@ public class BuildGrid extends Pane {
     private static Node createTTTGrid(GridPane coordGrid){
         for(int i = 1; i <= 9; i++){
             coordGrid.add(new Button(""+i), ((i-1)%3), (((i-1)/3)%3));
+
         }
         coordGrid.setPadding(new Insets(10,10,10,10));
         coordGrid.setGridLinesVisible(true);
