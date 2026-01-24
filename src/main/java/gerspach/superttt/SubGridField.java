@@ -18,10 +18,15 @@ public class SubGridField extends Button {
 
     private void handleClick() {
         if(!fieldState.isOccupied()){
-            if (game.getCurrentPlayer().getPlayerID() == 1)
+            if (game.getCurrentPlayer().getPlayerID() == 1){
                 setFieldState(FieldState.CROSS);
-            else if(game.getCurrentPlayer().getPlayerID() == 2)
-            setFieldState(FieldState.CIRCLE);
+                game.nextPlayer();
+            }
+            else if(game.getCurrentPlayer().getPlayerID() == 2){
+                setFieldState(FieldState.CIRCLE);
+                game.nextPlayer();
+            }
+
     }
 }
 

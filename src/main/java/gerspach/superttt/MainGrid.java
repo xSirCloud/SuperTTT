@@ -13,7 +13,6 @@ public class MainGrid {
         this.game = game;
     }
 
-
     Node buildMainGrid() {
         GridPane mainGrid = new GridPane();
         int x, y;
@@ -25,4 +24,9 @@ public class MainGrid {
         mainGrid.setPadding(new Insets(10, 50, 10, 10));
         return mainGrid;
     }
+
+
+
+
+
 }

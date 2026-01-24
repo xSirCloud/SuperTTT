@@ -11,8 +11,8 @@ public class SubGrid extends Pane {
     GridPane subGrid = new GridPane();
 
     public SubGrid(GameController game) {
-        this.getChildren().add(createTTTGrid(subGrid));
         this.game = game;
+        this.getChildren().add(createTTTGrid(subGrid));
     }
 
     private int[] subGirdArray = new int[9];

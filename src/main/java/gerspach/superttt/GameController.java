@@ -1,12 +1,11 @@
 package gerspach.superttt;
 
-import java.lang.reflect.Field;
 
 public class GameController {
     private FieldState curentPlayer = FieldState.CROSS;
 
     public FieldState getCurrentPlayer(){
-        return getCurrentPlayer();
+        return curentPlayer;
     }
 
     public void nextPlayer(){

@@ -13,7 +13,6 @@ public class Gui extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         BorderPane mainPane = new BorderPane();
-        GameController game = new GameController();
 
         // Create Main Pane
         mainPane.setRight(mainGrid.buildMainGrid());
@@ -25,6 +24,8 @@ public class Gui extends Application {
         stage.setMinWidth(900);
         stage.show();
     }
+
+
 
 
 }
