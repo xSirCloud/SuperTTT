@@ -6,10 +6,13 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 
 public class SubGrid extends Pane {
+
+    GameController game;
     GridPane subGrid = new GridPane();
 
-    public SubGrid() {
+    public SubGrid(GameController game) {
         this.getChildren().add(createTTTGrid(subGrid));
+        this.game = game;
     }
 
     private int[] subGirdArray = new int[9];
@@ -17,7 +20,7 @@ public class SubGrid extends Pane {
     private Node createTTTGrid(GridPane subGrid){
         int x, y;
         for (int i = 0; i < subGirdArray.length; i++) {
-            subGrid.add(new SubGridField(), x = (i % 3), y = (i / 3));
+            subGrid.add(new SubGridField(game), x = (i % 3), y = (i / 3));
             subGirdArray[i] = i;
         }
 

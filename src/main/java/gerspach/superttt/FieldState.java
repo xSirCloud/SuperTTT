@@ -1,9 +1,9 @@
 package gerspach.superttt;
 
 public enum FieldState {
-    EMPTY("", true, 0),
-    CROSS("X", false, 1),
-    CIRCLE("O", false, 2);
+    EMPTY("", false, 0),
+    CROSS("X", true, 1),
+    CIRCLE("O", true, 2);
 
     private final String displayText;
     private final boolean occupied;

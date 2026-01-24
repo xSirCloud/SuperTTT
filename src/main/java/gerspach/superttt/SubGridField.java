@@ -4,28 +4,25 @@ import javafx.scene.control.Button;
 
 public class SubGridField extends Button {
 
-    FieldState fieldState;
-    int currentPlayer = 1;
+    GameController game;
+    FieldState fieldState = FieldState.EMPTY;
 
-    public SubGridField(){
-        super("");
-        this.fieldState = FieldState.EMPTY;
+
+    public SubGridField(GameController game){
+        this.game = game;
+
         setText(fieldState.getDisplayText());
-
         setPrefSize(50,50);
-
         setOnAction(e -> handleClick());
     }
 
     private void handleClick() {
-        if(fieldState.isOccupied()){
-            if (currentPlayer == 1)
+        if(!fieldState.isOccupied()){
+            if (game.getCurrentPlayer().getPlayerID() == 1)
                 setFieldState(FieldState.CROSS);
-            else if(currentPlayer == 2)
+            else if(game.getCurrentPlayer().getPlayerID() == 2)
             setFieldState(FieldState.CIRCLE);
     }
-        currentPlayer = (currentPlayer == 1) ? 2 : 1;
-
 }
 
     private void setFieldState(FieldState state) {
