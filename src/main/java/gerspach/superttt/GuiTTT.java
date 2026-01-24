@@ -30,8 +30,8 @@ public class GuiTTT extends Application {
 
         stage.setScene(new Scene(mainPane));
         stage.setTitle("SuperTTT");
-        stage.setMinHeight(400);
-        stage.setMinWidth(600);
+        stage.setMinHeight(500);
+        stage.setMinWidth(900);
         stage.show();
     }
 
@@ -49,4 +49,6 @@ public class GuiTTT extends Application {
         Label label = new Label("MAIN PANE");
         return label;
     }
+
+
 }

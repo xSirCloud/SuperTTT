@@ -8,6 +8,7 @@ import javafx.scene.layout.Pane;
 
 public class BuildGrid extends Pane {
     GridPane coordGrid = new GridPane();
+
     public BuildGrid() {
         this.getChildren().add(createTTTGrid(coordGrid));
     }
@@ -16,13 +17,14 @@ public class BuildGrid extends Pane {
 
     private Node createTTTGrid(GridPane gridTTT){
         for (int i = 0; i < gridArray.length; i++) {
-            gridTTT.add(new Button(""+(i + 1)), i % 3, i / 3);
+            gridTTT.add(new GameGridField(), i % 3, i / 3);
             gridArray[i] = i;
         }
 
         gridTTT.setPadding(new Insets(10,10,10,10));
         gridTTT.setGridLinesVisible(true);
         return gridTTT;
+
     }
 
     public String getArrayData() {
