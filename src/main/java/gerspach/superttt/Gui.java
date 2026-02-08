@@ -1,8 +1,12 @@
 package gerspach.superttt;
 
 import javafx.application.Application;
+import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class Gui extends Application {
@@ -25,7 +29,14 @@ public class Gui extends Application {
         stage.show();
     }
 
-
-
+//    private Node controlPanel() {
+//        VBox vBox = new VBox();
+//        Button test = new Button("GetValue 1,4");
+//        Label info = new Label();
+//        test.setOnAction(event -> info.setText(game.getFieldValue()));
+//
+//        vBox.getChildren().addAll(test, info);
+//        return vBox;
+//    }
 
 }

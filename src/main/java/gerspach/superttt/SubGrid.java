@@ -7,39 +7,32 @@ import javafx.scene.layout.Pane;
 
 public class SubGrid extends Pane {
 
+    int subGrid_ID;
     GameController game;
     GridPane subGrid = new GridPane();
 
-    public SubGrid(GameController game) {
+    public SubGrid(GameController game, int subGrid_ID) {
         this.game = game;
         this.getChildren().add(createTTTGrid(subGrid));
+        this.subGrid_ID = subGrid_ID;
     }
 
-    private int[] subGirdArray = new int[9];
-
     private Node createTTTGrid(GridPane subGrid){
-        int x, y;
-        for (int i = 0; i < subGirdArray.length; i++) {
-            subGrid.add(new SubGridField(game), x = (i % 3), y = (i / 3));
-            subGirdArray[i] = i;
+        int x, y, field_ID;
+        for (int i = 0; i < 9; i++) {
+            field_ID = i;
+            subGrid.add(new SubGridField(game, field_ID), x = (i % 3), y = (i / 3));
         }
 
         subGrid.setPadding(new Insets(10,10,10,10));
         subGrid.setGridLinesVisible(true);
+
         return subGrid;
     }
 
-
+    public int getSubGrid_ID(){
+        return subGrid_ID;
+    }
 }
-//        gamePane.add(new Button("1"), 1, 0);
-//        gamePane.add(new Button("2"), 2, 0);
-//        gamePane.add(new Button("3"), 3, 0);
-//
-//        gamePane.add(new Button("4"), 1, 1);
-//        gamePane.add(new Button("5"), 2, 1);
-//        gamePane.add(new Button("6"), 3, 1);
-//
-//        gamePane.add(new Button("7"), 1, 2);
-//        gamePane.add(new Button("8"), 2, 2);
-//        gamePane.add(new Button("9"), 3, 2);
+
 

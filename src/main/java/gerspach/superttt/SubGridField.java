@@ -4,13 +4,13 @@ import javafx.scene.control.Button;
 
 public class SubGridField extends Button {
 
+    int field_ID;
     GameController game;
     FieldState fieldState = FieldState.EMPTY;
 
-
-    public SubGridField(GameController game){
+    public SubGridField(GameController game, int field_ID){
         this.game = game;
-
+        this.field_ID = field_ID;
         setText(fieldState.getDisplayText());
         setPrefSize(50,50);
         setOnAction(e -> handleClick());
@@ -26,7 +26,6 @@ public class SubGridField extends Button {
                 setFieldState(FieldState.CIRCLE);
                 game.nextPlayer();
             }
-
     }
 }
 
@@ -38,6 +37,11 @@ public class SubGridField extends Button {
     public FieldState getFieldState(){
         return fieldState;
     }
+
+    public int getField_ID(){
+        return field_ID;
+    }
+
 
 
 }
