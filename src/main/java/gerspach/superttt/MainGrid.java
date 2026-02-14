@@ -14,7 +14,7 @@ public class MainGrid {
 
     Node buildMainGrid() {
         GridPane mainGrid = new GridPane();
-        for (int i = 0; i < 9; i++) {
+        for (int i = 0; i <= 8; i++) {
             int subGrid_ID = i;
             SubGrid subGrid = new SubGrid(game, subGrid_ID);
 

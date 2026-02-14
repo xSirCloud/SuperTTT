@@ -15,21 +15,21 @@ public class SubGrid extends Pane {
     GameController game;
     GridPane subGrid = new GridPane();
 
- // Hier eine Liste von SubGridField
-    private final List<SubGridField> fields = new ArrayList<>(Collections.nCopies(9,null));
+
+    private final List<SubGridField> gridFields = new ArrayList<>(Collections.nCopies(9,null));
 
     public SubGrid(GameController game, int subGrid_ID) {
         this.game = game;
-        this.getChildren().add(createTTTGrid(subGrid));
         this.subGrid_ID = subGrid_ID;
+        this.getChildren().add(createTTTGrid(subGrid));
     }
 
     private Node createTTTGrid(GridPane subGrid){
-        for (int i = 0; i < 9; i++) {
+        for (int i = 0; i <= 8; i++) {
             int field_ID = i;
-            SubGridField field = new SubGridField(game, field_ID);
+            SubGridField field = new SubGridField(game, subGrid_ID, field_ID);
 
-            fields.set(field_ID, field);
+            gridFields.set(field_ID, field);
             subGrid.add(field, i % 3, i / 3);
 
             // subGrid.add(new SubGridField(game, field_ID), x = (i % 3), y = (i / 3));
@@ -44,6 +44,11 @@ public class SubGrid extends Pane {
     public int getSubGrid_ID(){
         return subGrid_ID;
     }
+
+    public SubGridField getField(int field_ID) {
+        return gridFields.get(field_ID);
+    }
 }
+
 
 
