@@ -13,7 +13,6 @@ public class Gui extends Application {
 
     GameController game = new GameController();
     private final MainGrid mainGrid = new MainGrid(game);
-    private final FieldClickValueTest fieldClickValueTest = new FieldClickValueTest();
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -21,7 +20,6 @@ public class Gui extends Application {
 
         // Create Main Pane
         mainPane.setRight(mainGrid.buildMainGrid());
-        fieldClickValueTest.register(game);
         mainPane.setStyle("-fx-background-color: #ffffff;");
 
         stage.setScene(new Scene(mainPane));
