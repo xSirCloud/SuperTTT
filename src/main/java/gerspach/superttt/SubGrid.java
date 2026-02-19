@@ -32,7 +32,6 @@ public class SubGrid extends Pane {
             gridFields.set(field_ID, field);
             subGrid.add(field, i % 3, i / 3);
 
-            // subGrid.add(new SubGridField(game, field_ID), x = (i % 3), y = (i / 3));
         }
 
         subGrid.setPadding(new Insets(10,10,10,10));
@@ -49,6 +48,7 @@ public class SubGrid extends Pane {
         return gridFields.get(field_ID);
     }
 }
+
 
 
 

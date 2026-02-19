@@ -18,7 +18,6 @@ public class Gui extends Application {
     public void start(Stage stage) throws Exception {
         BorderPane mainPane = new BorderPane();
 
-        // Create Main Pane
         mainPane.setRight(mainGrid.buildMainGrid());
         mainPane.setStyle("-fx-background-color: #ffffff;");
 
@@ -28,16 +27,6 @@ public class Gui extends Application {
         stage.setMinWidth(900);
         stage.show();
     }
-
-//    private Node controlPanel() {
-//        VBox vBox = new VBox();
-//        Button test = new Button("GetValue 1,4");
-//        Label info = new Label();
-//        test.setOnAction(event -> info.setText(game.getFieldValue()));
-//
-//        vBox.getChildren().addAll(test, info);
-//        return vBox;
-//    }
 
 }
 

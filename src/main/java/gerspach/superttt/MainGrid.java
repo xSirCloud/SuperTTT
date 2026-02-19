@@ -21,8 +21,6 @@ public class MainGrid {
             game.registerSubGrid(subGrid_ID, subGrid);
             mainGrid.add(subGrid, i % 3, i / 3);
 
-
-           // mainGrid.add(new SubGrid(game), x = (i % 3), y = (i / 3));
         }
 
         mainGrid.setGridLinesVisible(true);

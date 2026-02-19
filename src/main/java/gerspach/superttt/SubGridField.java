@@ -15,19 +15,9 @@ public class SubGridField extends Button {
         this.field_ID = field_ID;
         setText(fieldState.getDisplayText());
         setPrefSize(50,50);
-        setOnAction(e -> game.handleFieldClick(subGrid_ID, field_ID));
+        setOnAction(e -> game.handleClick(subGrid_ID, field_ID));
     }
-//    private void handleClick() {
-//        if(!fieldState.isOccupied()){
-//            if (game.getCurrentPlayer().getPlayerID() == 1){
-//                setFieldState(FieldState.CROSS);
-//                game.nextPlayer();
-//            }
-//            else if(game.getCurrentPlayer().getPlayerID() == 2){
-//                setFieldState(FieldState.CIRCLE);
-//                game.nextPlayer();
-//            }
-//    }
+
     protected void setFieldState(FieldState state) {
         this.fieldState = state;
         setText(state.getDisplayText());

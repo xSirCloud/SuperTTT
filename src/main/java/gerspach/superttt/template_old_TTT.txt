@@ -1,0 +1,62 @@
+public class Grid {
+
+    private char[][] board = new char[3][3];
+
+    public Grid(){
+        for (int i = 0; i < 3; i++)
+            for (int j = 0; j < 3; j++)
+                board[i][j] = ' ';
+    }
+
+    public void gridGraphic(){
+        for(int i = 0; i < 3; i++){
+            System.out.println(board[i][0] + " | " + board[i][1] + " | " + board[i][2]);
+            if (i < 2) System.out.println("---------");
+        }
+    }
+
+    private int[] convertInput(String input){
+        input = input.toLowerCase();
+        if (input.length() != 2) throw new IllegalArgumentException("Invalid input: " + input);
+
+        int row;
+        switch (input.charAt(0)){
+            case 'a': row = 0; break;
+            case 'b': row = 1; break;
+            case 'c': row = 2; break;
+            default: throw new IllegalArgumentException("Invalid row: " + input.charAt(0));
+        }
+
+        int column = Character.getNumericValue(input.charAt(1)) - 1;
+        if (column < 0 || column > 2) throw new IllegalArgumentException("Invalid column!" + input.charAt(1));
+        return new int[]{row, column};
+    }
+
+
+    public void move(char currentPlayer, String input){
+        int[] coordinates = convertInput(input);
+        int row = coordinates[0];
+        int column = coordinates[1];
+
+        if (board[row][column] != ' ')
+            throw new IllegalArgumentException("Field already occupied!");
+
+        board[row][column] = currentPlayer;
+    }
+
+    public boolean winFinder(char currentPlayer){
+        for (int i = 0; i < 3; i++){
+            if (board[i][0] == currentPlayer && board[i][1] == currentPlayer && board[i][2] == currentPlayer)
+                return true;
+            if (board[0][i] == currentPlayer && board[1][i] == currentPlayer && board[2][i] == currentPlayer)
+                return true;
+        }
+        if (board[0][0] == currentPlayer && board[1][1] == currentPlayer && board[2][2] == currentPlayer)
+            return true;
+        if (board[0][2] == currentPlayer && board[1][1] == currentPlayer && board[2][0] == currentPlayer)
+            return true;
+
+        return false;
+    }
+
+}
