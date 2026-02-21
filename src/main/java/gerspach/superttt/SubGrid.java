@@ -44,6 +44,10 @@ public class SubGrid extends Pane {
         return subGrid_ID;
     }
 
+    public List<SubGridField> getGridFields() {
+        return gridFields;
+    }
+
     public SubGridField getField(int field_ID) {
         return gridFields.get(field_ID);
     }
