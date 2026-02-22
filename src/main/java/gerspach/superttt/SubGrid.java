@@ -14,7 +14,9 @@ public class SubGrid extends Pane {
     int subGrid_ID;
     GameController game;
     GridPane subGrid = new GridPane();
-
+    boolean gridWinStatus = false;
+    boolean playable = true;
+    FieldState gridWinner = FieldState.EMPTY;
 
     private final List<SubGridField> gridFields = new ArrayList<>(Collections.nCopies(9,null));
 
@@ -31,17 +33,10 @@ public class SubGrid extends Pane {
 
             gridFields.set(field_ID, field);
             subGrid.add(field, i % 3, i / 3);
-
         }
-
         subGrid.setPadding(new Insets(10,10,10,10));
         subGrid.setGridLinesVisible(true);
-
         return subGrid;
-    }
-
-    public int getSubGrid_ID(){
-        return subGrid_ID;
     }
 
     public List<SubGridField> getGridFields() {
@@ -51,6 +46,29 @@ public class SubGrid extends Pane {
     public SubGridField getField(int field_ID) {
         return gridFields.get(field_ID);
     }
+
+    public void setGridWinStatus(boolean status){
+        gridWinner = game.getCurrentPlayer();
+        gridWinStatus = status;
+    }
+
+    public void highlighter() {
+        if(gridWinStatus)
+            if (game.getCurrentPlayer() == FieldState.CROSS)
+                subGrid.setStyle("-fx-background-color: rgba(245,39,39); -fx-border-color: #F52727; -fx-border-width: 2;");
+            else
+                subGrid.setStyle("-fx-background-color: rgba(39,80,245); -fx-border-color: #2750F5; -fx-border-width: 2;");
+        else if (!playable)
+            subGrid.setStyle("-fx-background-color: rgba(43,43,43); -fx-border-color: #2B2B2B; -fx-border-width: 2;");
+        else
+            return;
+
+    }
+
+    public void playable(boolean status){
+        playable = status;
+    }
+
 }
 
 

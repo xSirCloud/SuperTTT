@@ -23,18 +23,22 @@ public class GameController {
     public void handleClick(int subGrid_ID, int field_ID){
         // specified field, located via ID's in subGrid- & fields List's.
         SubGridField field = getField(subGrid_ID, field_ID);
+        SubGrid subGrid = getSubGrid(subGrid_ID);
 
-        // sets desired fieldvalue based on the current player, with correct move validation.
-        boolean moveValidation = BasicLogic.setFieldValue(field, field.game);
+        // set desired fieldvalue based on the current player, with correct move validation.
+        boolean moveValidation = BasicLogic.setFieldValue(field, this);
         if (!moveValidation) {
             return;
         }
-
-        BasicLogic.winCheck(field.game, subGrids.get(subGrid_ID).getGridFields());
-
-
-
+        // Check if the made move led to a subGridWin, set the Winstatus true & highlight grid
+        if(BasicLogic.subWinCheck(subGrid.getGridFields())){
+            subGrid.setGridWinStatus(true);
+        }
+        subGrid.playable(BasicLogic.checkPlayability(subGrid.getGridFields()));
+        subGrid.highlighter();
         currentPlayer = BasicLogic.nextPlayer(currentPlayer);
+
+
     }
 
     public SubGrid getSubGrid(int subGrid_ID) {
