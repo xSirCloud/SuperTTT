@@ -20,6 +20,7 @@ public class Gui extends Application {
 
         mainPane.setRight(mainGrid.buildMainGrid());
         mainPane.setStyle("-fx-background-color: #ffffff;");
+        mainPane.setLeft(Terminal.buildTerminal(game));
 
         stage.setScene(new Scene(mainPane));
         stage.setTitle("SuperTTT");
@@ -27,6 +28,8 @@ public class Gui extends Application {
         stage.setMinWidth(900);
         stage.show();
     }
+
+
 
 }
 

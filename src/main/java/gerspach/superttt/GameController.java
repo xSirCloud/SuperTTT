@@ -6,7 +6,9 @@ import java.util.Collections;
 import java.util.List;
 
 public class GameController {
-    private static FieldState currentPlayer = FieldState.CROSS;
+    private FieldState currentPlayer = FieldState.CROSS;
+    private boolean gameOver = false;
+    private FieldState gameWinner = FieldState.EMPTY;
 /*
     Datasave architektur über Listen: GameController hält List "subGrids" erzeugt in MainGrid < SubGrid hält seine eigene 3x3 Liste "fields" erzeugt in SubGrid
     Liste an Subgrids mit vordefinierter Länge um in den For-schleifen direkt mit settern zu arbeiten.
@@ -21,6 +23,8 @@ public class GameController {
     }
 
     public void handleClick(int subGrid_ID, int field_ID){
+        if (gameOver)
+            return;
         // specified field, located via ID's in subGrid- & fields List's.
         SubGridField field = getField(subGrid_ID, field_ID);
         SubGrid subGrid = getSubGrid(subGrid_ID);
@@ -36,9 +40,23 @@ public class GameController {
         }
         subGrid.playable(BasicLogic.checkPlayability(subGrid.getGridFields()));
         subGrid.highlighter();
+
+        FieldState winner = SuperLogic.bigWinCheck(subGrids);
+        if (winner != FieldState.EMPTY){
+            gameWinner = winner;
+            gameOver = true;
+            SuperLogic.gameOverBlocker(subGrids);
+            return;
+        }
+
+        if(!SuperLogic.hasPlayableSubGrids(subGrids)){
+            gameOver = true; // draw
+            SuperLogic.gameOverBlocker(subGrids);
+            return;
+        }
+
+        SuperLogic.fieldBlocker(field_ID, subGrids);
         currentPlayer = BasicLogic.nextPlayer(currentPlayer);
-
-
     }
 
     public SubGrid getSubGrid(int subGrid_ID) {
