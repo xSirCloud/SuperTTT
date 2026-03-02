@@ -57,9 +57,9 @@ public class SubGrid extends Pane {
             if (gridWinner == FieldState.CROSS)
                 subGrid.setStyle("-fx-background-color: rgba(245,39,39); -fx-border-color: #F52727; -fx-border-width: 2;");
             else
-                subGrid.setStyle("-fx-background-color: rgba(39,80,245); -fx-border-color: #2750F5; -fx-border-width: 2;");
+                subGrid.setStyle("-fx-background-color: rgb(39,80,245); -fx-border-color: #2750F5; -fx-border-width: 2;");
         else if (!playable)
-            subGrid.setStyle("-fx-background-color: rgba(43,43,43); -fx-border-color: #2B2B2B; -fx-border-width: 2;");
+            subGrid.setStyle("-fx-background-color: rgb(21,21,21); -fx-border-color: #151515; -fx-border-width: 2;");
         else
             subGrid.setStyle("");
     }

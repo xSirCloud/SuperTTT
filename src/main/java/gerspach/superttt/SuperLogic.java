@@ -68,7 +68,7 @@ public class SuperLogic {
             throw new IllegalArgumentException("subGrids must contain exactly 9 entries");
         }
 
-        FieldState[] mainBoard = new FieldState[9];
+        FieldState[] mainGrid = new FieldState[9];
 
         for (int i = 0; i < 9; i++) {
             SubGrid grid = subGrids.get(i);
@@ -81,7 +81,7 @@ public class SuperLogic {
                 throw new IllegalStateException("SubGrid fields invalid at index " + i);
             }
 
-            mainBoard[i] = resolveSubGridWinner(fields);
+            mainGrid[i] = resolveSubGridWinner(fields);
         }
 
         int[][] winConditions = {
@@ -91,9 +91,9 @@ public class SuperLogic {
         };
 
         for (int[] condition : winConditions) {
-            FieldState a = mainBoard[condition[0]];
-            FieldState b = mainBoard[condition[1]];
-            FieldState c = mainBoard[condition[2]];
+            FieldState a = mainGrid[condition[0]];
+            FieldState b = mainGrid[condition[1]];
+            FieldState c = mainGrid[condition[2]];
 
             if (a != FieldState.EMPTY && a == b && b == c) {
                 return a;

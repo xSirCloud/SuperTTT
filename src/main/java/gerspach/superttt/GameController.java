@@ -1,6 +1,10 @@
 package gerspach.superttt;
 
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -56,7 +60,23 @@ public class GameController {
         }
 
         SuperLogic.fieldBlocker(field_ID, subGrids);
+        Json_Test.addMove(subGrid_ID, field_ID);
+
         currentPlayer = BasicLogic.nextPlayer(currentPlayer);
+        // Methode von Terminal.java verschieben!!!
+        Terminal.label.setText("Active Player: " + this.getCurrentPlayer());
+
+        if(true){
+            try {
+                Json_Test.saveFile();
+            }
+            catch(IOException e){
+
+            }
+        }
+
+
+
     }
 
     public SubGrid getSubGrid(int subGrid_ID) {
@@ -73,6 +93,7 @@ public class GameController {
     public FieldState getCurrentPlayer(){
         return currentPlayer;
     }
+
 }
 
 
